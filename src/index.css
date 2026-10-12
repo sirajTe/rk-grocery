@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-navy-50: #eef1fb;
+  --color-navy-100: #dbe1f5;
+  --color-navy-200: #b6c2ea;
+  --color-navy-500: #34479c;
+  --color-navy-700: #1f2d78;
+  --color-navy-800: #1b2a6b;
+  --color-navy-900: #121c4d;
+  --color-navy-950: #0b1233;
+  --color-brand-50: #fff4ec;
+  --color-brand-100: #ffe4d0;
+  --color-brand-400: #ff8a42;
+  --color-brand-500: #f26a1b;
+  --color-brand-600: #d9560c;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-[#f4f6fb] text-slate-800 antialiased; }
+
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float 8s ease-in-out infinite 1s; }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+.animate-fade-up { animation: fade-up .6s ease-out both; }
+
+@keyframes slide-in { from { transform: translateX(100%) } to { transform: none } }
+.animate-slide-in { animation: slide-in .28s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* Printing (used by /all-orders): only the page content */
+@media print {
+  body { background: #fff; }
+  header, footer, .print-hide { display: none !important; }
+  @page { margin: 12mm; }
+}
